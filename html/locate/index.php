@@ -65,7 +65,7 @@ $location_results   = $db->fetch($location_query);
              
              <br/>
              
-            <input type="checkbox" class='category_checkbox' <? checkcheck('local_knowledge', $categories) ?> value='local_knowledge'> Local knowledge<br/>
+            <input type="checkbox" checked='false' class='category_checkbox' <? checkcheck('local_knowledge', $categories) ?> value='local_knowledge'> Local knowledge<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('crime_emergencies', $categories) ?> value='crime_emergencies'> Crime and emergencies<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('community_events', $categories) ?> value='community_events'> Community events<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('forsale_giveaway', $categories) ?> value='forsale_giveaway'> Buy Sell<br/>

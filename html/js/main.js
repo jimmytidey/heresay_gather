@@ -61,7 +61,7 @@ $(document).ready(function() {
 	
 	
 	//For the locate section
-	
+	$('.category_checkbox').attr('checked', false);
 	var elem 	= $('.item');
 	heresay.maps 	= [];
 	heresay.markers = [];
