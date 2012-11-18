@@ -15,17 +15,22 @@ class scraperDefault {
     	for ($x = 0; $x < $max; $x++)  {
 
     		$item = $feed->get_item($x);
-
-    	    echo "<h3>".strip_tags($item->get_title()). "<em>" .$item->get_date() ."</em></h3>"; 
-            echo "<p>". strip_tags($item->get_description()). "</p>";
+    		
+    		$title = $item->get_title() { 
             
-            $title          = strip_tags($item->get_title());
-            $description    = strip_tags($item->get_description());
-            $link           = $item->get_permalink();
-            $date           = strtotime($item->get_date()); 
+            if (strpos($title, 'Re: ') === false) { 
             
-            $output = $this->db->save_update($site['site'], $title, $description, $link, $date);
-            echo $output;
+        	    echo "<h3>".strip_tags($item->get_title()). "<em>" .$item->get_date() ."</em></h3>"; 
+                echo "<p>". strip_tags($item->get_description()). "</p>";
+            
+                $title          = strip_tags($item->get_title());
+                $description    = strip_tags($item->get_description());
+                $link           = $item->get_permalink();
+                $date           = strtotime($item->get_date()); 
+            
+                $output = $this->db->save_update($site['site'], $title, $description, $link, $date);
+                echo $output;
+            }    
 
         }
 
