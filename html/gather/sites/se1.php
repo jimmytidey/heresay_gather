@@ -18,7 +18,7 @@ class scraperse1 {
             
             $title = $item->get_title(); 
             
-            if (strpos($title, '] Re: ') === false) { 
+            if (strpos($title, 'Re: ') === false) { 
             
         	    echo "<h3>".strip_tags($item->get_title()). "<em>" .$item->get_date() ."</em></h3>"; 
                 echo "<p>". strip_tags($item->get_description()). "</p>";
