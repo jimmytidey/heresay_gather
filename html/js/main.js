@@ -118,7 +118,6 @@ $(document).ready(function() {
 		lat 	= $(".map", elem).attr('data-lat');
 		lng 	= $(".map", elem).attr('data-lng');
 		id 		= $(".map", elem).attr('data-id');
-		id 		= $(".map", elem).attr('data-id');
 		
 		heresay.cat_elems = []; 
 		
@@ -151,7 +150,7 @@ $(document).ready(function() {
 			lng = 0; 
 		}
 		
-		$.get("/api/save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&link='+link+"&favourite="+favourite, function(html) { 
+		$.get("/api/save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&id='+id+"&favourite="+favourite, function(html) { 
 		    console.log(html);
 		});
 	});	
