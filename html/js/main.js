@@ -126,6 +126,10 @@ $(document).ready(function() {
 		lng 	= $(".map", elem).attr('data-lng');
 		id 		= $(".map", elem).attr('data-id');
 		
+		console.log(lat);
+		console.log(lng);
+		console.log(id);
+		
 		heresay.cat_elems = []; 
 		
 		$('.category_checkbox', elem).each(function(key,val){
