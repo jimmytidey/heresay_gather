@@ -63,8 +63,9 @@ $(document).ready(function() {
 	//For the locate section
 	
 	var elem 	= $('.item');
-	var maps 	= [];
-	var markers = [];
+	heresay.maps 	= [];
+	heresay.markers = [];
+	heresay.autocompletes = [];
 	$.each(elem, function(key, val) { 
 
 		lat 	= $(".map", val).attr('data-lat');
@@ -80,34 +81,40 @@ $(document).ready(function() {
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 	    };
 		
-	    maps[id] = new google.maps.Map($(".map", val)[0], myOptions);
+	    heresay.maps[id] = new google.maps.Map($(".map", val)[0], myOptions);
+		heresay.maps[id].heresay_id = id;
 		var myLatlng = new google.maps.LatLng(lat, lng);
 		
-	    markers[id] = new google.maps.Marker({
+	    heresay.markers[id] = new google.maps.Marker({
 	        position: myLatlng, 
-	        map: maps[id],
+	        map: heresay.maps[id],
 	        draggable:true,
 	        title:"move me about"
 	    });
 		
 	    //this adds the search stuff 
 	    var input = $(".search", val)[0];
-		console.log($(".search", val)[0]);
-	    var autocomplete = new google.maps.places.Autocomplete(input);
-	    autocomplete.bindTo('bounds', maps[id]);
+
+	    heresay.autocompletes[id] = new google.maps.places.Autocomplete(input);
+	    heresay.autocompletes[id].bindTo('bounds', heresay.maps[id]);
+		heresay.autocompletes[id].heresay_id = id;
     
-	    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        
-	        var place = this.getPlace();                            
+	    google.maps.event.addListener(heresay.autocompletes[id], 'place_changed', function() {
+			
+			var id = this.heresay_id;
+			
+			
+	        var place = this.getPlace();
+			
 	        if (place.geometry.viewport) {
-	            map.fitBounds(place.geometry.viewport);
+	            heresay.maps[id].fitBounds(place.geometry.viewport);
 	        } else {
-	            map.setCenter(place.geometry.location);
-	            map.setZoom(17);  // Why 17? Because it looks good.
+	            heresay.maps[id].setCenter(place.geometry.location);
+	            heresay.maps[id].setZoom(17);  // Why 17? Because it looks good.
 	        }
         
 	        var point = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-	        markers[id].setPosition(point);
+	        heresay.markers[id].setPosition(point);
         
 	    });		
 	});
@@ -128,7 +135,7 @@ $(document).ready(function() {
 			}
 		});		
 		
-	    var position =  markers[id].getPosition();
+	    var position =  heresay.markers[id].getPosition();
 	    var lat = position.lat();
 	    var lng = position.lng(); 
 	    var link = encodeURIComponent($('.gather_link', elem).attr('href'));
