@@ -70,8 +70,10 @@ $location_results   = $db->fetch($location_query);
             <input type="checkbox" class='category_checkbox' <? checkcheck('community_events', $categories) ?> value='community_events'> Community events<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('forsale_giveaway', $categories) ?> value='forsale_giveaway'> Buy Sell<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('charity', $categories) ?> value='charity'> Charity<br/>                            
-            <input type="checkbox" class='category_checkbox' <? checkcheck('pets_nature', $categories) ?> value='pets_nature'> Pets and nature<br/>   
-            <input type="checkbox" class='category_checkbox' <? checkcheck('shops_restaurants', $categories) ?> value='shops_restaurants'> Shops / Restaurants / Bars<br/>
+            <input type="checkbox" class='category_checkbox' <? checkcheck('pets_nature', $categories) ?> value='pets_nature'> Pets and nature<br/> 
+            <input type="checkbox" class='category_checkbox' <? checkcheck('parks', $categories) ?> value='pets_nature'> Parks<br/>               
+            <input type="checkbox" class='category_checkbox' <? checkcheck('shops_restaurants', $categories) ?> value='shops_restaurants'> Shops<br/>
+            <input type="checkbox" class='category_checkbox' <? checkcheck('restaurants_bars', $categories) ?> value='shops_restaurants'>Restaurants / Bars<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('art', $categories) ?> value='art'> Art / music / culture<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('sport', $categories) ?> value='sport'> Sport<br/>                          
             <input type="checkbox" class='category_checkbox' <? checkcheck('food_drink', $categories) ?> value='food_drink'> Food and Drink<br/>
