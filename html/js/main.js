@@ -149,14 +149,14 @@ $(document).ready(function() {
 	    var category_4 = escape(heresay.cat_elems[3]);
 	    var favourite  = escape();	
 
-		if($('.favourite_checkbox').is(':checked')) {
+		if($('.favourite_checkbox', elem).is(':checked')) {
 			favourite = 1; 
 		}
 		else { 
 			favourite = 0; 
 		}
 		
-		if($('.no_location_checkbox').is(':checked')) {
+		if($('.no_location_checkbox', elem).is(':checked')) {
 			lat = 0;
 			lng = 0; 
 		}
