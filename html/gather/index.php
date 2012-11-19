@@ -1,4 +1,12 @@
-<? include ('../header.php'); ?>
+<? 
+/*  This page renders iFrames for every site 
+*   If the site has the default scraper (as specified in the db)
+*   then it lumps them all together 
+*
+*/
+
+
+include ('../header.php'); ?>
 
 <h1>Gather Data From Websites</h1>
 

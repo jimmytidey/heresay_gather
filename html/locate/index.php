@@ -82,7 +82,8 @@ $location_results   = $db->fetch($location_query);
             <input type="checkbox" class='category_checkbox' <? checkcheck('lost', $categories) ?> value='lost'> Lost<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('transport', $categories) ?> value='transport'> Transport<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('council', $categories) ?> value='council'> Council business<br/> 
-            <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='kids'> Kids<br/>                                                                         
+            <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='kids'> Kids<br/>    
+            <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='disabilities'> Disabilities<br/>                                                                         
             
             <input type='button' value='save' class='save_btn'  /> 
             
