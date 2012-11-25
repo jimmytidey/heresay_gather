@@ -6,7 +6,9 @@
     <h2>Utilities</h2>
     <ul>
         <li><a href='/gather'>Manage data scrape</a></li>
-        <li><a href='/locate'>Locate items</a></li>  
+        <li><a href='/locate'>Locate items</a></li>
+        <li><a href='/geocode'>Geocode</a></li>
+          
     </ul>
 </div>
 
