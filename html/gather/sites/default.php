@@ -16,7 +16,7 @@ class scraperDefault {
 
     		$item = $feed->get_item($x);
     		
-    		$title = $item->get_title() { 
+    		$title = $item->get_title();
             
             if (strpos($title, 'Re: ') === false) { 
             
