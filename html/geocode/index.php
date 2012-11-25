@@ -22,7 +22,7 @@ foreach($results as $result) {
         print_r($location_data['results']);
     }
     else { 
-        $location_name = $location_data['results'][0]['formatted_address']; 
+        $location_name = addslashes($location_data['results'][0]['formatted_address']); 
         $id     = $result['id'];
         $query  = "UPDATE manual_updates
         SET location_name='$location_name'
