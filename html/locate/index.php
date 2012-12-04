@@ -1,7 +1,7 @@
 <? 
 
 include('../header.php'); 
-$query              = "SELECT * FROM manual_updates WHERE lat='' ORDER BY id desc LIMIT 10";
+$query              = "SELECT * FROM manual_updates WHERE lat='' ORDER BY pubdate desc LIMIT 10";
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
