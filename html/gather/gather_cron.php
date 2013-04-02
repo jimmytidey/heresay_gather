@@ -1,7 +1,7 @@
 <? 
 
 
-include (__DIR__'../gather/header.php');
+include (__DIR__ . '../gather/header.php');
 
 //loads a class for reading RSS feeds
 include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
