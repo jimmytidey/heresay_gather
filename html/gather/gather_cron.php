@@ -1,7 +1,11 @@
 <? 
 
+include(__DIR__ . '/../ini.php');
 
-include (__DIR__ . '/../header.php');
+@$url = explode("/",$_GET['url']);
+$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
+
+
 
 //loads a class for reading RSS feeds
 include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
@@ -39,8 +43,6 @@ foreach ($urls as $url) {
 
 $sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
 $db->query($sql);
-include (__DIR__ . '/../footer.php'); 
-
 
 
 ?>

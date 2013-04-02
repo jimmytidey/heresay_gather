@@ -20,7 +20,7 @@ class scraperDefault {
             
             if (strpos($title, 'Re: ') === false) { 
             
-        	    echo strip_tags($item->get_title()). "<em>  " .$item->get_date() ."\n\n"; 
+        	    echo strip_tags($item->get_title()) " - ".$item->get_date() ."\n\n"; 
                 echo strip_tags($item->get_description()). "\n\n";
             
                 $title          = strip_tags($item->get_title());
@@ -31,10 +31,11 @@ class scraperDefault {
                 $output = $this->db->save_update($site['site'], $title, $description, $link, $date);
                 echo $output;
             }    
+            echo "----------------------------------------\n\n";
 
         }
 
-        echo "----------------------------------------\n\n";
+        
     }
 }
 
