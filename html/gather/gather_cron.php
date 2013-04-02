@@ -12,26 +12,13 @@ foreach (glob("sites/*.php") as $filename) {
     include $filename;
 }
 
-$site       = @$_GET['site'];
-$site_id    = @$_GET['site_id'];
 
-if ($site !='') {
-    if ($site != 'default') { 
-        $sql    = "SELECT * FROM manual_sites WHERE site='$site'"; 
-    }
+//Cycle through the values
 
-    else {
-         $sql    = "SELECT * FROM manual_sites WHERE scraper=''"; 
-    }
-}
+$current_value = $db->fetch('SELECT * FROM cron_manage');
+$current_value = $current_value[0]['current_value'];
+$sql    = "SELECT * FROM manual_sites WHERE site_id='$current_value'"; 
 
-else if ($site_id !='') {
-    $sql    = "SELECT * FROM manual_sites WHERE site_id='$site_id'";
-
-}
-else { 
-    echo "<h2>No site provided</h2>";
-}
 
 // get all the urls associated with this site
 $urls=$db->fetch($sql);
@@ -39,8 +26,8 @@ $urls=$db->fetch($sql);
 // feed those urls into the relevant scraper class (either default or the specific one)
 foreach ($urls as $url) { 
     
-    echo "Site:".$url['site']."\n\n";
-    echo "URL".$url['url']."\n\n";
+    echo "Site: ".$url['site']."\n\n<br/>";
+    echo "URL: ".$url['url']."\n\n";
     
     if (empty($url['scraper'])) { 
         $scraper = new scraperDefault($url);
@@ -51,12 +38,8 @@ foreach ($urls as $url) {
     }
 }
 
-
-
-
-
-
-
+$sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
+$db->query($sql);
 include ('../footer.php'); 
 
 

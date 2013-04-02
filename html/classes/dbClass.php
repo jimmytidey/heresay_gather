@@ -52,7 +52,7 @@ class dbClass {
         $result = $this->fetch($query); 
 
         if (empty($result)) { 
-            $output =  "<p style='color:red'>SAVING</p>";
+            $output =  "--= SAVING =-- \n\n\n\n";
             
             $title          = addslashes($title);
             $description    = addslashes($description);
@@ -66,7 +66,8 @@ class dbClass {
         } 
 
         else { 
-           $output =  "<p style='color:green'>Already in</p><br/>"; 
+           //$output =  "<p style='color:green'>Already in</p><br/>"; 
+           $output = "Already in \n\n";
         }
         return $output; 
      }
