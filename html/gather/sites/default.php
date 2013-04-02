@@ -20,7 +20,7 @@ class scraperDefault {
             
             if (strpos($title, 'Re: ') === false) { 
             
-        	    echo strip_tags($item->get_title()) " - ".$item->get_date() ."\n\n"; 
+        	    echo strip_tags($item->get_title()) . " - ".$item->get_date() ."\n\n"; 
                 echo strip_tags($item->get_description()). "\n\n";
             
                 $title          = strip_tags($item->get_title());
