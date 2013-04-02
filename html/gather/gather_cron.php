@@ -1,11 +1,11 @@
 <? 
 
 
-include ('../header.php');
+include (__DIR__'../gather/header.php');
 
 //loads a class for reading RSS feeds
-include_once('../classes/simplepie/autoloader.php');
-include_once('../classes/simplepie/idn/idna_convert.class.php');
+include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
+include_once(__DIR__ . '/../classes/simplepie/idn/idna_convert.class.php');
 
 //load all the scraper classes from inside the sites directory
 foreach (glob("sites/*.php") as $filename) {
@@ -40,7 +40,7 @@ foreach ($urls as $url) {
 
 $sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
 $db->query($sql);
-include ('../footer.php'); 
+include (__DIR__ . '/../footer.php'); 
 
 
 
