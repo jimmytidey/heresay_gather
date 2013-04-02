@@ -8,7 +8,7 @@ include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
 include_once(__DIR__ . '/../classes/simplepie/idn/idna_convert.class.php');
 
 //load all the scraper classes from inside the sites directory
-foreach (glob("sites/*.php") as $filename) {
+foreach (glob(__DIR__ . "/../gather/sites/*.php") as $filename) {
     include $filename;
 }
 
