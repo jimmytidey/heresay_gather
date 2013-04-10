@@ -30,6 +30,10 @@ if ($current_value >= $max_number) {
     $sql    = "UPDATE cron_manage SET current_value = 0"; 
     $db->query($sql);
 }
+else { 
+    $sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
+    $db->query($sql);
+}
 
 
 // get all the urls associated with this site
@@ -51,7 +55,7 @@ foreach ($urls as $url) {
 }
 
 $sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
-$db->query($sql);
+
 
 
 
