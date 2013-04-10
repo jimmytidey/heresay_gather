@@ -47,10 +47,10 @@ class dbClass {
     }    
     
     function save_update($site, $title, $description, $link, $date) {
-        $md5 = md5($description);
+        $md5 = md5($description . $title);
         $query = "SELECT * FROM manual_updates WHERE link = '$link' OR md5='$md5'";
         $result = $this->fetch($query); 
-
+       
         if (empty($result)) { 
             $output =  "--= SAVING =-- \n\n\n\n";
             
@@ -68,6 +68,7 @@ class dbClass {
         else { 
            //$output =  "<p style='color:green'>Already in</p><br/>"; 
            $output = "Already in \n\n";
+           print_r($result);
         }
         return $output; 
      }

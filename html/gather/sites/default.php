@@ -12,6 +12,7 @@ class scraperDefault {
     	$feed->handle_content_type();
 
     	$max = $feed->get_item_quantity();
+    
     	for ($x = 0; $x < $max; $x++)  {
 
     		$item = $feed->get_item($x);
@@ -26,6 +27,7 @@ class scraperDefault {
                 $title          = strip_tags($item->get_title());
                 $description    = strip_tags($item->get_description());
                 $link           = $item->get_permalink();
+                
                 $date           = strtotime($item->get_date()); 
             
                 $output = $this->db->save_update($site['site'], $title, $description, $link, $date);
