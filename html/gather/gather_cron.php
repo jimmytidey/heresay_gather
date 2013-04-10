@@ -44,5 +44,13 @@ foreach ($urls as $url) {
 $sql    = "UPDATE cron_manage SET current_value = current_value+1"; 
 $db->query($sql);
 
+$max_query  = "SELECT * FROM manual_sites ORDER BY site_id DESC LIMIT 1"; 
+$max_number = $db->fetch($max_query);
+$max_number = $max_number[0]['site_id'];
+
+if ($current_value >= $max_number) { 
+    $sql    = "UPDATE cron_manage SET current_value = 0"; 
+    $db->query($sql);
+}
 
 ?>
