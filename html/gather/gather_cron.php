@@ -20,7 +20,6 @@ foreach (glob(__DIR__ . "/../gather/sites/*.php") as $filename) {
 //Cycle through the values
 $current_value = $db->fetch('SELECT * FROM cron_manage');
 $current_value = $current_value[0]['current_value'];
-$sql    = "SELECT * FROM manual_sites WHERE site_id='$current_value'"; 
 
 $max_query  = "SELECT * FROM manual_sites ORDER BY site_id DESC LIMIT 1"; 
 $max_number = $db->fetch($max_query);
@@ -35,7 +34,7 @@ else {
     $db->query($sql);
 }
 
-
+$sql    = "SELECT * FROM manual_sites WHERE site_id='$current_value'"; 
 // get all the urls associated with this site
 $urls=$db->fetch($sql);
 
