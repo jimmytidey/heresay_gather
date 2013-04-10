@@ -7,14 +7,24 @@ class scraperDefault {
         $feed = new SimplePie();
     	$feed->set_feed_url($site['url']);
     	
-    	$feed->enable_cache(false);
-    	$feed->init();
-    	$feed->handle_content_type();
+        $feed->enable_cache(true);
+        $feed->set_cache_location('cache');
+        $feed->set_cache_duration(15);
+
+        $feed->init();
+
+        $feed->handle_content_type();
+
+        if ($feed->error):
+
+            echo  $feed->error;
+
+        endif; 
 
     	$max = $feed->get_item_quantity();
-    
+        
     	for ($x = 0; $x < $max; $x++)  {
-
+            prinrt_r
     		$item = $feed->get_item($x);
     		
     		$title = $item->get_title();
