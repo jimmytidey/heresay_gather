@@ -2,7 +2,7 @@
 
 include('../header.php'); 
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE short_url='' && lat != '--' LIMIT 400");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE short_url='' && lat != '--' LIMIT 200");
 
 foreach($results as $result) {
     
@@ -10,10 +10,27 @@ foreach($results as $result) {
   
     $link = urlencode($result['link']);
     
+    
         
     $geo_url = 'http://api.bit.ly/v3/shorten?apikey=R_47a9b2e5ba6ce9f6cac9a247c2a4e25c&login=jimmytidey&URI=' . $link;
     echo $geo_url;
-    $location_data = json_decode(file_get_contents($geo_url), true);
+
+    $ch = curl_init(); 
+
+    // set url 
+    curl_setopt($ch, CURLOPT_URL, $geo_url); 
+
+    //return the transfer as a string 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+    // $output contains the output string 
+    $output = curl_exec($ch); 
+
+    // close curl resource to free up system resources 
+    curl_close($ch);    
+    
+    
+    $location_data = json_decode($output, true);
     //print_r();
     
     if ($location_data['status_code'] != 200) {

@@ -1,0 +1,1 @@
+php ~/domains/gather.heresay.org.uk/html/shorten/index.php
