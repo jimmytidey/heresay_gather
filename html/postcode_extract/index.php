@@ -38,7 +38,6 @@ foreach($results as $result) {
         }
         else { 
             $location_name = addslashes($location_data['results'][0]['formatted_address']);
-            
             $id     = $result['id'];
             $query  = "UPDATE manual_updates
             SET location_name='$location_name', postcode='$post_code'
