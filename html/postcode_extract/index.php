@@ -4,7 +4,7 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 
-$results = $db->fetch("SELECT * FROM manual_updates where postcode=0  ORDER BY lat DESC LIMIT 300 ");
+$results = $db->fetch("SELECT * FROM manual_updates where postcode=0 ORDER BY lat DESC LIMIT 300 ");
 
 foreach($results as $result) {
   
@@ -29,11 +29,12 @@ foreach($results as $result) {
         
             $post_code= $address_component['long_name'];
         }
+        else { 
+            $post_code = 'no code';
+        }
     }
     
-    if(empty($post_code)) { 
-        $post_code = 'no code';
-    }
+
 
     print_r($post_code);
 
