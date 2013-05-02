@@ -8,7 +8,9 @@
         <li><a href='/gather'>Manage data scrape</a></li>
         <li><a href='/locate'>Locate items</a></li>
         <li><a href='/geocode'>Geocode</a></li>
-          
+        <li><a href='/shorten'>Shorten URL</a></li>  
+        <li><a href='/mappit'>Code Regions</a></li>  
+        <li><a href='/mappit'>Monitor</a></li>          
     </ul>
 </div>
 
