@@ -1,19 +1,36 @@
 <?
 
-include('../header.php'); 
+include(__DIR__ . '/../ini.php');
+$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE borogh='' && postcode != '0' LIMIT 3");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE borough='' && LENGTH(postcode)>=5 LIMIT 3");
 
 foreach($results as $result) {
     
     sleep(1);
-    $postcode = str_replace(' ', '', $result['link']);
+    $postcode = $result['postcode'];
     
         
     $geo_url = 'http://mapit.mysociety.org/postcode/' . $postcode;
     echo $geo_url;
-    $location_data = json_decode(file_get_contents($geo_url), true);
-    //print_r();
+
+
+    $ch = curl_init(); 
+
+    // set url 
+    curl_setopt($ch, CURLOPT_URL, $geo_url); 
+
+    //return the transfer as a string 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+    // $output contains the output string 
+    $output = curl_exec($ch); 
+
+    // close curl resource to free up system resources 
+    curl_close($ch);
+    
+    $location_data = json_decode($output, true);
+        
     
     if ($location_data['status_code'] != 200) {
         echo('FAIL');
