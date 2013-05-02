@@ -1,6 +1,5 @@
 <?
 
-
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
@@ -12,12 +11,13 @@ foreach($results as $result) {
     $lat = $result['lat'];
     $lng = $result['lng'];
         
-    if (!empty($lat)) {    
+    if (1==1) {    
          sleep(1);
         $geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
         echo $geo_url;
         $location_data = json_decode(file_get_contents($geo_url), true);
-        echo $result['title'] . "<br />";
+        print_r($location_data);
+	echo $result['title'] . "<br />";
         echo $result['lat'] . "<br />";
         echo $result['lng'] . "<br />";
         //print_r($location_data['results'][0]['address_components']);
