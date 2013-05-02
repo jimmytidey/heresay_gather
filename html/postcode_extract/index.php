@@ -4,6 +4,7 @@
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
+
 $results = $db->fetch("SELECT * FROM manual_updates WHERE postcode='' && lat != '--' && lat != '0'   LIMIT 500 ");
 
 foreach($results as $result) {
