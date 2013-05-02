@@ -12,7 +12,7 @@ foreach($results as $result) {
     $lat = $result['lat'];
     $lng = $result['lng'];
         
-    $post_code =0;
+    $post_code ='';
     sleep(1);
     $geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
     echo $geo_url;
