@@ -4,7 +4,7 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 
-$results = $db->fetch("SELECT * FROM manual_updates where postcode=0 ORDER BY lat DESC LIMIT 300 ");
+$results = $db->fetch("SELECT * FROM manual_updates where postcode=0 ORDER BY lat DESC LIMIT 100 ");
 
 foreach($results as $result) {
   
@@ -14,10 +14,26 @@ foreach($results as $result) {
             
       
     $post_code ='';
-    sleep(0.2);
+    sleep(0.3);
     $geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
     echo $geo_url;
-    $location_data = json_decode(file_get_contents($geo_url), true);
+    
+    $ch = curl_init(); 
+
+    // set url 
+    curl_setopt($ch, CURLOPT_URL, $geo_url); 
+
+    //return the transfer as a string 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+    // $output contains the output string 
+    $output = curl_exec($ch); 
+
+    // close curl resource to free up system resources 
+    curl_close($ch);
+    
+    
+    $location_data = json_decode($output, true);
     echo $result['title'] . "<br />";
     echo $result['lat'] . "<br />";
     echo $result['lng'] . "<br />";
@@ -27,11 +43,9 @@ foreach($results as $result) {
     foreach ($location_data['results'][0]['address_components'] as $address_component) { 
         if($address_component['types'][0] == 'postal_code' ||$address_component['types'][0]=='postal_code_prefix'){
         
-            $post_code= $address_component['long_name'];
+            $post_code = $address_component['long_name'];
         }
-        else { 
-            $post_code = 'no code';
-        }
+
     }
     
 

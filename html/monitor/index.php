@@ -40,7 +40,7 @@ for($time=$yesterday_midnight; $time>1343797200; $time=$time-(60*60*24)) {
      
 
      $results = $db->fetch("SELECT count(*) FROM manual_updates WHERE  lat!='' && lat!='0'  && pubdate > $time_minus && pubdate< $time");
-     echo "<P>Posts with lat lng:    " . $results[0]['count(*)'] . "</p>";
+     echo "<P>Posts with lat lng: " . $results[0]['count(*)'] . "</p>";
   
      echo "<hr/>";
 }
