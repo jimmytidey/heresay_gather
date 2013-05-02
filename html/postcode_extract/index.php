@@ -5,14 +5,15 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE postcode='' && lat != '--' && lat != '0'   LIMIT 500 ");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE postcode='' && lat != '--' && lat != '0'   LIMIT 2000 ");
 
 foreach($results as $result) {
-    sleep(1);
+  
     $lat = $result['lat'];
     $lng = $result['lng'];
         
-    if (is_numeric($lat)) {    
+    if (!empty($lat)) {    
+         sleep(1);
         $geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
         echo $geo_url;
         $location_data = json_decode(file_get_contents($geo_url), true);
@@ -37,7 +38,7 @@ foreach($results as $result) {
         }
         else { 
             $location_name = addslashes($location_data['results'][0]['formatted_address']);
-            $location_name = addslashes($location_data['results'][0]['formatted_address']); 
+            
             $id     = $result['id'];
             $query  = "UPDATE manual_updates
             SET location_name='$location_name', postcode='$post_code'
