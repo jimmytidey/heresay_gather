@@ -10,9 +10,9 @@ class scraperDefault {
         $feed->enable_cache(true);
         $feed->set_cache_location('cache');
         $feed->set_cache_duration(15);
-
-        $feed->init();
-
+	$feed->force_feed(true);
+	$feed->set_output_encoding('UTF-8');
+	$feed->init();
         $feed->handle_content_type();
 
         if ($feed->error):
@@ -23,8 +23,9 @@ class scraperDefault {
 
     	$max = $feed->get_item_quantity();
         
+
     	for ($x = 0; $x < $max; $x++)  {
-            prinrt_r
+          
     		$item = $feed->get_item($x);
     		
     		$title = $item->get_title();
