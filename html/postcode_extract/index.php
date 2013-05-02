@@ -1,6 +1,6 @@
 <?
 
-include(__DIR__ . '/../ini.php');
+include('../header.php'); 
 
 $results = $db->fetch("SELECT * FROM manual_updates WHERE postcode='' && lat != '--' && lat != '0' && lat != ''  LIMIT 500 ");
 
