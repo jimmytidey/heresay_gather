@@ -4,7 +4,7 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 
-$results = $db->fetch("SELECT * FROM manual_updates where postcode=0  ORDER BY lat DESC LIMIT 500 ");
+$results = $db->fetch("SELECT * FROM manual_updates where postcode=0  ORDER BY lat DESC LIMIT 300 ");
 
 foreach($results as $result) {
   
@@ -14,7 +14,7 @@ foreach($results as $result) {
             
       
     $post_code ='';
-    sleep(1);
+    sleep(0.2);
     $geo_url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' . $lat . ',' . $lng . '&sensor=false';
     echo $geo_url;
     $location_data = json_decode(file_get_contents($geo_url), true);
