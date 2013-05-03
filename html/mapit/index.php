@@ -3,7 +3,7 @@
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE borough='0' && lat>0 LIMIT 500");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE borough='0' && lat>0 LIMIT 200");
 
 foreach($results as $result) {
     
