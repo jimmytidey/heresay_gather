@@ -34,17 +34,17 @@ foreach($results as $result) {
     
     foreach($location_data as $location_datum) { 
         if ($location_datum['type_name'] == 'London borough') { 
-            $borough = $location_datum['name'];
+            $borough = addslashes($location_datum['name']);
             echo $borough;
         }
         
         if ($location_datum['type_name'] == 'London borough ward') { 
-            $ward = $location_datum['name'];
+            $ward = addslashes($location_datum['name']);
             echo $ward;
         }
         
         if ($location_datum['type_name'] == 'UK Parliament constituency') { 
-            $constituency = $location_datum['name'];
+            $constituency = addslashes($location_datum['name']);
             echo $constituency;
         }
 
