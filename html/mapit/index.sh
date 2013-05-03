@@ -1,1 +1,1 @@
-php ~/domains/gather.heresay.org.uk/html/mappit/index.php
+php ~/domains/gather.heresay.org.uk/html/mapit/index.php
