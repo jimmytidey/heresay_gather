@@ -31,6 +31,8 @@ foreach($results as $result) {
     $location_data = json_decode($output, true);
     
     print_r($location_data);
+    
+    
    
     
     foreach($location_data as $location_datum) { 
