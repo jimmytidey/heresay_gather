@@ -3,7 +3,7 @@
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE borough='0' && lat>0 LIMIT 200");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE (borough='0' || borough='') && lat>0 LIMIT 200");
 
 foreach($results as $result) {
     
@@ -30,6 +30,7 @@ foreach($results as $result) {
     
     $location_data = json_decode($output, true);
     
+    print_r($location_data);
    
     
     foreach($location_data as $location_datum) { 
