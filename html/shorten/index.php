@@ -9,8 +9,6 @@ foreach($results as $result) {
     sleep(1);
   
     $link = urlencode($result['link']);
-    
-    
         
     $geo_url = 'http://api.bit.ly/v3/shorten?apikey=R_47a9b2e5ba6ce9f6cac9a247c2a4e25c&login=jimmytidey&URI=' . $link;
     echo $geo_url;
