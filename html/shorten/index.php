@@ -1,4 +1,5 @@
 <?
+
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
@@ -26,7 +27,6 @@ foreach($results as $result) {
 
     // close curl resource to free up system resources 
     curl_close($ch);    
-    
     
     $location_data = json_decode($output, true);
     //print_r();
