@@ -2,11 +2,11 @@
 include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
-$results = $db->fetch("SELECT * FROM manual_updates WHERE short_url='' && lat != '--' LIMIT 200");
+$results = $db->fetch("SELECT * FROM manual_updates WHERE short_url='' && lat != '--' LIMIT 50");
 
 foreach($results as $result) {
     
-    sleep(2);
+    sleep(1);
   
     $link = urlencode($result['link']);
     
@@ -37,6 +37,12 @@ foreach($results as $result) {
         echo('FAIL');
         print_r($location_data);
     }
+    
+    else if (strlen($location_data['data']['url']) < 5) { 
+        echo "This URL doesn't look right";
+        
+    }
+    
     else { 
         $short_url = addslashes($location_data['data']['url']); 
         $id     = $result['id'];
