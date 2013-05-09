@@ -50,17 +50,19 @@ class dbClass {
         $md5 = md5($description . $title);
         $query = "SELECT * FROM manual_updates WHERE link = '$link' OR md5='$md5'";
         $result = $this->fetch($query); 
+        
+       
        
         if (empty($result)) { 
             $output =  "--= SAVING =-- \n\n\n\n";
-            
+            $short_url      = addslashes(getBitly($link));
             $title          = addslashes($title);
             $description    = addslashes($description);
             $link           = addslashes($link);
             $date           = addslashes($date);           
              
-            $query = "INSERT INTO manual_updates (site, title, description, link, pubdate, md5) 
-            VALUES ('$site', '$title', '$description', '$link', '$date', '$md5')";
+            $query = "INSERT INTO manual_updates (site, title, description, link, pubdate, md5, short_url) 
+            VALUES ('$site', '$title', '$description', '$link', '$date', '$md5', '$short_url')";
             
             $this->query($query); 
         } 

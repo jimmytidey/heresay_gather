@@ -1,11 +1,6 @@
 <?
 
-include(__DIR__ . '/../ini.php');
-$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
-
-$results = $db->fetch("SELECT * FROM manual_updates WHERE (borough='0' || borough='') && lat>0 ORDER BY id DESC LIMIT 200");
-
-foreach($results as $result) {
+function getMapit($lat, $lng) {
     
     sleep(1);
     $lat = $result['lat'];
@@ -38,31 +33,26 @@ foreach($results as $result) {
     foreach($location_data as $location_datum) { 
         if ($location_datum['type_name'] == 'London borough') { 
             $borough = addslashes($location_datum['name']);
-            echo $borough;
+            
         }
         
         if ($location_datum['type_name'] == 'London borough ward') { 
             $ward = addslashes($location_datum['name']);
-            echo $ward;
+            
         }
         
         if ($location_datum['type_name'] == 'UK Parliament constituency') { 
             $constituency = addslashes($location_datum['name']);
-            echo $constituency;
+            
         }
 
     }
+       
+    $result[0] = $constituency;
+    $result[1] = $borough;    
+    $result[2] = $ward;
     
-
-    
-    $query  = "UPDATE manual_updates
-    SET borough='$borough', ward='$ward', constituency='$constituency'
-    WHERE id=$id";
-    $db->query($query);
-    echo $query;
-    
-
-    echo "<hr />";
+    return $result; 
 }
 
 

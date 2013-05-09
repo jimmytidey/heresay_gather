@@ -5,52 +5,7 @@ heresay={};
 
 $(document).ready(function() { 
 
-	$('#btn_search').click(function(){ 
-		var query = $('#search_query').val(); 
-		window.location = "/explore/search/"+query; 
-	});
-
-	$(".save_tags_btn").click(function() { 
-		var tags = []; 
-		var tags_string
-		var pub_id = $(this).attr('data-pub-id');
-		console.log(pub_id);
-		var tag_elems = $('span [data-pub-id="'+pub_id+'"]:checked');
-
-		$.each(tag_elems, function(key, val){
-			tags.push($(val).val());
-			console.log($(val).val());
-		}); 
-	
-		tags_string = encodeURIComponent(tags.join());
-	
-		var url = '/api/publications/save_tags.php?pub_id=' + pub_id + '&tags=' + tags_string; 
-	
-		$(this).parent().append("<img src='/img/ajax-loader-balls.gif' class='loader' />"); 
-		
-		$.getJSON(url, function(data){ 
-			$('.loader').remove();
-		});
-	});
-
-
-
-	$(".save_twitter_btn").click(function(){ 
-		var twitter_handle = $(this).siblings().val();
-		twitter_handle = encodeURIComponent(twitter_handle);
-		var person_id = $(this).siblings().attr('data-person_id');
-		var url = '/api/people/save_twitter_handle.php?person_id=' + person_id + '&twitter_handle=' + twitter_handle ; 
-		$(this).parent().append("<img src='/img/ajax-loader-balls.gif' class='loader' />"); 
-		
-		$.getJSON(url, function(data){ 
-			$('.loader').remove();
-			console.log(data);
-		});
-	});
-
-
 	//FOR THE GATHER SECTION 
-
 	$('.btn_gather').click(function() { 
 		var site	= $(this).attr('data-name');
 		var site_id	= $(this).attr('data-id');

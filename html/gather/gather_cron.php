@@ -6,6 +6,8 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 
 
+//Get the bitly converter
+include_once(__DIR__ . '/../functions/getBitly.php');
 
 //loads a class for reading RSS feeds
 include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
@@ -35,6 +37,7 @@ else {
 }
 
 $sql    = "SELECT * FROM manual_sites WHERE site_id='$current_value'"; 
+
 // get all the urls associated with this site
 $urls=$db->fetch($sql);
 
