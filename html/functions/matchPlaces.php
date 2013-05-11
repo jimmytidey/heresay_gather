@@ -24,7 +24,7 @@ function extract_place_terms($text, $area = null, $country = null){
     if(!isset($place_match) || $place_match == ""){
         $place_regex = "/ from ([A-Z]\w+(,( [A-Z|a-z]\w+)+)?).*since/";
         preg_match_all($place_regex, $text, $place_matches, PREG_PATTERN_ORDER);
-        $place_match = $place_matches[1][0];
+        @$place_match = $place_matches[1][0];
     }
 
     $place_match = trim($place_match);
@@ -61,20 +61,28 @@ function extract_place_terms($text, $area = null, $country = null){
     return $return;
 }
 
-function match_first($first, $second) { 
-    $value = preg_match($second, $first);
-    
-    return $value;
-}
-
-function has_value($val) { 
-    if(empty($val)) { 
-        return false;
+// Match First - grab the first match from a regex test
+    function match_first($text, $regex){
+        
+        $return = null;
+        preg_match_all($regex, $text, $matches, PREG_PATTERN_ORDER);
+ 
+        if(sizeof($matches) > 0 && isset($matches[0][0])){
+            $return = $matches[0][0];
+        }
+        
+        return $return;
     }
-    else { 
-        return true;
+ 
+ 
+    function has_value($var){
+        
+        $return = true;
+        if(!isset($var) || $var == '' || $var === false){
+            $return = false;
+        }
+        
+        return $return;
     }
-}
-
 
 ?>
