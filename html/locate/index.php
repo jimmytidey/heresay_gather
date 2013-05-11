@@ -1,7 +1,9 @@
 <? 
 
-include('../header.php'); 
-$query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10";
+include('../header.php');
+include(__DIR__ . '/../functions/matchPlaces.php');
+
+$query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 100";
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
@@ -51,6 +53,14 @@ $location_results   = $db->fetch($location_query);
             
              <h3><a href='<?echo $result['link'] ?>' target='_blank' class='gather_link'><?echo $result['title'] ?></a></h3>
              <p class='description'><?echo strip_tags(htmlspecialchars_decode ($result['description'])) ?> </p>
+             <?
+                $text = $result['description'] . " " . $result['title'];
+                $terms = extract_place_terms($text);
+                print_r($terms);
+             
+             ?>
+             
+             
              <p class='site'>Site: <?echo strip_tags(htmlspecialchars_decode ($result['site'])) ?> </p>
          </div>     
         
@@ -65,13 +75,16 @@ $location_results   = $db->fetch($location_query);
              
              <br/>
              
-            <input type="checkbox" checked='false' class='category_checkbox' <? checkcheck('local_knowledge', $categories) ?> value='local_knowledge'> Local knowledge<br/>
+            <input type="checkbox" checked='false' class='category_checkbox' <? checkcheck('local_knowledge', $categories) ?> value='local_knowledge'> Local history<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('crime_emergencies', $categories) ?> value='crime_emergencies'> Crime and emergencies<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('crime_emergencies', $categories) ?> value='jobs'> Jobs<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('community_events', $categories) ?> value='community_events'> Community events<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('forsale_giveaway', $categories) ?> value='forsale_giveaway'> Buy Sell<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('charity', $categories) ?> value='charity'> Charity<br/> 
             <input type="checkbox" class='category_checkbox' <? checkcheck('pets_nature', $categories) ?> value='pets_nature'> Pets and nature<br/> 
+            
+            <br/>
+            
             <input type="checkbox" class='category_checkbox' <? checkcheck('parks', $categories) ?> value='parks'> Parks<br/>               
             <input type="checkbox" class='category_checkbox' <? checkcheck('shops', $categories) ?> value='shops'> Shops<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('restaurants_bars', $categories) ?> value='restaurants_bars'>Restaurants / Bars<br/>

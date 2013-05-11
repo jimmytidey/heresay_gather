@@ -1,6 +1,6 @@
 <?                                      
 //Match street anmes and palces. Not this assumes the first place and street are the most important and returns them
-public static function extract_place_terms($text, $area = null, $country = null){
+function extract_place_terms($text, $area = null, $country = null){
     $return = false;
 
     //TODO: remove obvious places - downing street, scotland yard etc
@@ -56,8 +56,25 @@ public static function extract_place_terms($text, $area = null, $country = null)
         }
 
     }
+    print_r($return);
 
     return $return;
 }
+
+function match_first($first, $second) { 
+    $value = preg_match($second, $first);
+    
+    return $value;
+}
+
+function has_value($val) { 
+    if(empty($val)) { 
+        return false;
+    }
+    else { 
+        return true;
+    }
+}
+
 
 ?>
