@@ -23,9 +23,7 @@ function getAddress($lat, $lng) {
     
     
     $location_data = json_decode($output, true);
-    echo $result['title'] . "<br />";
-    echo $result['lat'] . "<br />";
-    echo $result['lng'] . "<br />";
+
     //print_r($location_data['results'][0]['address_components']);
     $post_code = '';
 

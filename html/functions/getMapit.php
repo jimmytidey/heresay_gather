@@ -1,12 +1,7 @@
 <?
 
 function getMapit($lat, $lng) {
-    
-    sleep(1);
-    $lat = $result['lat'];
-    $lng = $result['lng'];
-    $id = $result['id'];
-        
+            
     $geo_url = 'http://mapit.mysociety.org/point/4326/'. $lng.','. $lat;
 
     $ch = curl_init(); 
@@ -25,11 +20,7 @@ function getMapit($lat, $lng) {
     
     $location_data = json_decode($output, true);
     
-    print_r($location_data);
-    
-    
    
-    
     foreach($location_data as $location_datum) { 
         if ($location_datum['type_name'] == 'London borough') { 
             $borough = addslashes($location_datum['name']);

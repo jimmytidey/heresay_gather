@@ -2,6 +2,7 @@
 
 
 include ('../header.php');
+include(__DIR__ . '/../functions/gitBitly.php');
 
 //loads a class for reading RSS feeds
 include_once('../classes/simplepie/autoloader.php');

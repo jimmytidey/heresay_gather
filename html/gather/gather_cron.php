@@ -1,6 +1,7 @@
 <? 
 
 include(__DIR__ . '/../ini.php');
+include(__DIR__ . '/../functions/getBitly.php');
 
 @$url = explode("/",$_GET['url']);
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
