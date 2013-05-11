@@ -9,7 +9,7 @@ $results = $db->fetch("
 SELECT * FROM manual_updates
 WHERE `short_url` = '' 
 ORDER BY ID DESC
-LIMIT 10");
+LIMIT 100");
 
 foreach($results as $result) {
     
