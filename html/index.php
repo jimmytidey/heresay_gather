@@ -10,7 +10,7 @@
         <li><a href='/geocode'>Geocode</a></li>
         <li><a href='/shorten'>Shorten URL</a></li>  
         <li><a href='/mappit'>Code Regions</a></li>  
-        <li><a href='/mappit'>Monitor</a></li>          
+        <li><a href='/monitor'>Monitor</a></li>          
     </ul>
 </div>
 

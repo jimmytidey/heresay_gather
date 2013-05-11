@@ -71,19 +71,30 @@ $location_results   = $db->fetch($location_query);
             <input type="checkbox" class='category_checkbox' <? checkcheck('community_events', $categories) ?> value='community_events'> Community events<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('forsale_giveaway', $categories) ?> value='forsale_giveaway'> Buy Sell<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('charity', $categories) ?> value='charity'> Charity<br/> 
-            <input type="checkbox" class='category_checkbox' <? checkcheck('elderly', $categories) ?> value='elderly'> Elderly<br/>                            
             <input type="checkbox" class='category_checkbox' <? checkcheck('pets_nature', $categories) ?> value='pets_nature'> Pets and nature<br/> 
             <input type="checkbox" class='category_checkbox' <? checkcheck('parks', $categories) ?> value='parks'> Parks<br/>               
             <input type="checkbox" class='category_checkbox' <? checkcheck('shops', $categories) ?> value='shops'> Shops<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('restaurants_bars', $categories) ?> value='restaurants_bars'>Restaurants / Bars<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('art', $categories) ?> value='art'> Art / music / culture<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('sport', $categories) ?> value='sport'> Sport<br/>                          
-            <input type="checkbox" class='category_checkbox' <? checkcheck('food_drink', $categories) ?> value='food_drink'> Food and Drink<br/>
+            <input type="checkbox" class='category_checkbox' <? checkcheck('housing', $categories) ?> value='housing'> Housing<br/>                          
+            <input type="checkbox" class='category_checkbox' <? checkcheck('health', $categories) ?> value='health'> Health<br/>                          
+
+
+            <br/>
+
             <input type="checkbox" class='category_checkbox' <? checkcheck('lost', $categories) ?> value='lost'> Lost<br/>
             <input type="checkbox" class='category_checkbox' <? checkcheck('transport', $categories) ?> value='transport'> Transport<br/>
-            <input type="checkbox" class='category_checkbox' <? checkcheck('council', $categories) ?> value='council'> Council business<br/> 
-            <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='kids'> Kids<br/>    
+            <input type="checkbox" class='category_checkbox' <? checkcheck('council', $categories) ?> value='council'> Local Politics<br/> 
+            <input type="checkbox" class='category_checkbox' <? checkcheck('planning', $categories) ?> value='planning'>Planning<br/> 
+            
+            <br/>
+            
+            <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='kids'> Kids<br/>     
             <input type="checkbox" class='category_checkbox' <? checkcheck('disabilities', $categories) ?> value='disabilities'> Disabilities<br/>                                                                         
+                                                                           
+            <input type="checkbox" class='category_checkbox' <? checkcheck('elderly', $categories) ?> value='elderly'> Elderly<br/>                            
+
             
             <input type='button' value='save' class='save_btn'  /> 
             

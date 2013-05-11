@@ -1,13 +1,15 @@
 <? 
 
 include('../header.php'); 
+
+
 $query              = "SELECT * FROM manual_updates WHERE lat='' && site='harringayonline.com' ORDER BY pubdate desc LIMIT 10";
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
 $location_results   = $db->fetch($location_query);
 
-
+extract_place_terms(
 
 ?>
 <h1>Locate</h1>
