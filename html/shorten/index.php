@@ -9,14 +9,14 @@ $results = $db->fetch("
 SELECT * FROM manual_updates
 WHERE `short_url` = '0' || `short_url` = ''&& link !=''
 ORDER BY ID DESC
-LIMIT 100
+LIMIT 5
 ");
 
 foreach($results as $result) {
     
     sleep(1);
     print_r($result);
-    $link = urlencode($result['link']);
+    $link = trim(urlencode($result['link']));
         
     $geo_url = 'http://api.bit.ly/v3/shorten?apikey=R_47a9b2e5ba6ce9f6cac9a247c2a4e25c&login=jimmytidey&URI=' . $link;
     echo $geo_url;
