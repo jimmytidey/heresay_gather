@@ -7,9 +7,10 @@ include(__DIR__ . '/../ini.php');
 $db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
 $results = $db->fetch("
 SELECT * FROM manual_updates
-WHERE `short_url` = '0' || `short_url` = ''
+WHERE `short_url` = '0' || `short_url` = ''&& link !=''
 ORDER BY ID DESC
-LIMIT 100");
+LIMIT 100
+");
 
 foreach($results as $result) {
     
