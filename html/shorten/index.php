@@ -10,7 +10,7 @@ $results = $db->fetch("
     FROM manual_updates
     WHERE (
     `short_url` = '0' || `short_url` = ''
-    ) && link LIKE "%http%"
+    ) && link LIKE '%http%'
     ORDER BY ID DESC
     LIMIT 5
 ");
