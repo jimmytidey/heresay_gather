@@ -12,7 +12,7 @@ $results = $db->fetch("
     `short_url` = '0' || `short_url` = ''
     ) && link LIKE '%http%'
     ORDER BY ID DESC
-    LIMIT 5
+    LIMIT 100
 ");
 
 foreach($results as $result) {
