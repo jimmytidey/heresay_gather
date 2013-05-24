@@ -90,7 +90,7 @@ $(document).ready(function() {
 	    }
 		
 		console.log(lat);
-		console.log(lng);
+		console.log(lng); 
 		console.log(id);
 		
 		heresay.cat_elems = []; 
