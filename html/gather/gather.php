@@ -1,17 +1,25 @@
 <? 
 
 
-include ('../header.php');
-include(__DIR__ . '/../functions/gitBitly.php');
+include(__DIR__ . '/../ini.php');
+include(__DIR__ . '/../functions/getBitly.php');
+
+@$url = explode("/",$_GET['url']);
+$db = new dbClass(DB_LOCATION, DB_USER_NAME, DB_PASSWORD, DB_NAME);
+
+
+//Get the bitly converter
+include_once(__DIR__ . '/../functions/getBitly.php');
 
 //loads a class for reading RSS feeds
-include_once('../classes/simplepie/autoloader.php');
-include_once('../classes/simplepie/idn/idna_convert.class.php');
+include_once(__DIR__ . '/../classes/simplepie/autoloader.php');
+include_once(__DIR__ . '/../classes/simplepie/idn/idna_convert.class.php');
 
 //load all the scraper classes from inside the sites directory
-foreach (glob("sites/*.php") as $filename) {
+foreach (glob(__DIR__ . "/../gather/sites/*.php") as $filename) {
     include $filename;
 }
+
 
 $site       = @$_GET['site'];
 $site_id    = @$_GET['site_id'];
