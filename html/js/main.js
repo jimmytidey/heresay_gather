@@ -80,8 +80,8 @@ $(document).ready(function() {
 		var lat 	= $(".map", elem).attr('data-lat');
 		var lng 	= $(".map", elem).attr('data-lng');
 		var id 		= $(".map", elem).attr('data-id');
-		
-		if(typeof heresay.autocompletes[id].getPlace().address_components !== 'undefined') {
+		console.log(id);
+		if(typeof heresay.autocompletes[id].getPlace() !== 'undefined') {
 		    var address_components = heresay.autocompletes[id].getPlace().address_components;
 	    }
 	    
