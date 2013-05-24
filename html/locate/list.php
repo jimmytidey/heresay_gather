@@ -5,7 +5,7 @@ include ('../header.php');
 
 
 
-$sql    = "SELECT * FROM manual_sites ";
+$sql    = "SELECT DISTINCT site FROM manual_sites ORDER BY site";
 // get all the urls associated with this site
 $urls=$db->fetch($sql);
 
