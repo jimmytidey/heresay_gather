@@ -3,7 +3,14 @@
 include('../header.php');
 include(__DIR__ . '/../functions/matchPlaces.php');
 
-$query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 100";
+$site_name = @urldecode($_GET['site_name']); 
+
+if(empty($site_name)) { 
+    $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10";
+}
+else { 
+    $query              = "SELECT * FROM manual_updates WHERE category_1='' && site='$site_name' ORDER BY pubdate desc LIMIT 10";
+}
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
