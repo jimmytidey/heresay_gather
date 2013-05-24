@@ -16,7 +16,7 @@ foreach ($urls as $url) {
     $name = $url['site']; 
 
      
-    echo "<p><a href='index.php?site_name=$site_name'>$name</a></p>";
+    echo "<p><a href='index.php?site_name=$site_name'>LOCATE: $name </a>  / <a href='../gather/gather.php?site=$site_name'>GATHER: $name </a></p>";
     
 }
 
