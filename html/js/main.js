@@ -81,8 +81,13 @@ $(document).ready(function() {
 		var lng 	= $(".map", elem).attr('data-lng');
 		var id 		= $(".map", elem).attr('data-id');
 		
-		var address_components = heresay.autocompletes[id].getPlace().address_components;
-	
+		if(typeof heresay.autocompletes[id].getPlace().address_components !== 'undefined') {
+		    var address_components = heresay.autocompletes[id].getPlace().address_components;
+	    }
+	    
+	    else { 
+	         var address_components = '';
+	    }
 		
 		console.log(lat);
 		console.log(lng);
