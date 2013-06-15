@@ -25,11 +25,13 @@ $constituency       = $mapit_results[0];
 $borough            = $mapit_results[1];
 $ward               = $mapit_results[2];
 
+$user               = mysql_real_escape_string($_GET['user']);
+
 
 $query = "UPDATE manual_updates 
 SET lat='$lat', lng='$lng', favourite='$favourite', category_1='$category_1', category_2='$category_2', 
 category_3='$category_3', category_4='$category_4', 
-postcode='$postcode',  location_name='$location_name', constituency='$constituency', borough='$borough', ward='$ward' WHERE id='$id'";
+postcode='$postcode',  location_name='$location_name', constituency='$constituency', borough='$borough', ward='$ward', user='$user' WHERE id='$id'";
 $db->query($query); 
 
 echo $query;    

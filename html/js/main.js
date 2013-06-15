@@ -75,11 +75,14 @@ $(document).ready(function() {
 	});
 	
 	$('.save_btn').click(function(){
+	    
+	    
 		elem = $(this).parent().parent();
 		
 		var lat 	= $(".map", elem).attr('data-lat');
 		var lng 	= $(".map", elem).attr('data-lng');
 		var id 		= $(".map", elem).attr('data-id');
+		var user    = escape(gup('user'));
 		console.log(id);
 		if(typeof heresay.autocompletes[id].getPlace() !== 'undefined') {
 		    var address_components = heresay.autocompletes[id].getPlace().address_components;
@@ -125,13 +128,25 @@ $(document).ready(function() {
 		}
 		
 		
-		$.get("/api/save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&id='+id+"&favourite="+favourite, function(html) { 
+		$.get("/api/save.php?category_1="+category_1+"&category_2="+ category_2+"&category_3="+category_3+"&category_4="+category_4+"&lat="+lat+'&lng='+lng+'&id='+id+"&favourite="+favourite + "&user=" + user, function(html) { 
 		    console.log(html);
 		});
 		
 	});	
 	
 });
+
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
 
 
 
