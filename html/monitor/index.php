@@ -24,7 +24,9 @@ echo "<h1>Historical stats</h1>";
 $yesterday_midnight = strtotime("Yesterday");
 
 $yesterday_midnight = $yesterday_midnight+ (60*60*12); 
+
 $i = 0;
+
 for($time=$yesterday_midnight; $time>1343797200; $time=$time-(60*60*24)) { 
     if ($i<20) { 
         $time_minus = $time-(60*60*24);
