@@ -11,7 +11,8 @@
         <li><a href='/geocode'>Geocode</a></li>
         <li><a href='/shorten'>Shorten URL</a></li>  
         <li><a href='/mappit'>Code Regions</a></li>  
-        <li><a href='/monitor'>Monitor</a></li>          
+        <li><a href='/monitor'>Monitor</a></li>
+        <li><a href='http://heresay.org.uk/users.php'>Map filtered by user</a></li>          
     </ul>
 </div>
 

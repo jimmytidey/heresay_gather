@@ -25,7 +25,21 @@ $yesterday_midnight = strtotime("Yesterday");
 
 $yesterday_midnight = $yesterday_midnight+ (60*60*12); 
 
+?> <h3>All time user records</h3>
+<?
+$results = $db->fetch("SELECT *, COUNT(*) from manual_updates GROUP BY user"); 
+
+foreach($results as $result) { 
+    if(!empty($result['user'])) {
+        echo "<p>". $result['user'] . " - " . $result['COUNT(*)'] . "</p>";
+    }
+}
+
+
+
 $i = 0;
+
+
 
 for($time=$yesterday_midnight; $time>1343797200; $time=$time-(60*60*24)) { 
     if ($i<20) { 
@@ -48,7 +62,9 @@ for($time=$yesterday_midnight; $time>1343797200; $time=$time-(60*60*24)) {
         $results = $db->fetch("SELECT *, COUNT(*) from manual_updates WHERE pubdate > '$time_minus' && pubdate< '$time' GROUP BY user"); 
 
         foreach($results as $result) { 
-            echo "<p>". $result['user'] . " - " . $result['COUNT(*)'] . "</p>";
+            if(!empty($result['user'])) {
+                echo "<p>". $result['user'] . " - " . $result['COUNT(*)'] . "</p>";
+            }
         }    
         echo "<hr/>";
         $i++;
