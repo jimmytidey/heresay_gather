@@ -17,6 +17,16 @@ echo "<P>Total Number Of Located Posts</p>";
 $results = $db->fetch("SELECT count(*) FROM manual_updates WHERE lat!='' && lat!='--' && lat!='0'");
 echo $results[0]['count(*)'];
 
+
+echo "<P>By User</p>";
+$results = $db->fetch("SELECT *, COUNT(*) from manual_updates GROUP BY user"); 
+
+foreach($results as $result) { 
+    if(!empty($result['user'])) {
+        echo "<p>". $result['user'] . " - " . $result['COUNT(*)'] . "</p>";
+    }
+}
+
 echo "<hr/>";
 
 echo "<h1>Historical stats</h1>";
@@ -25,15 +35,7 @@ $yesterday_midnight = strtotime("Yesterday");
 
 $yesterday_midnight = $yesterday_midnight+ (60*60*12); 
 
-?> <h3>All time user records</h3>
-<?
-$results = $db->fetch("SELECT *, COUNT(*) from manual_updates GROUP BY user"); 
 
-foreach($results as $result) { 
-    if(!empty($result['user'])) {
-        echo "<p>". $result['user'] . " - " . $result['COUNT(*)'] . "</p>";
-    }
-}
 
 
 
