@@ -3,14 +3,31 @@
 include('../header.php');
 include(__DIR__ . '/../functions/matchPlaces.php');
 
-$site_name = @urldecode($_GET['site_name']); 
+$site_name = @urldecode($_GET['site_name']);
+$lat = @addslashes(urldecode($_GET['lat'])); 
+$lng = @addslashes(urldecode($_GET['lng'])); 
 
-if(empty($site_name)) { 
-    $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10";
+if(!empty($lat) && !empty($lng)) { 
+    $query = "SELECT 
+      *, 
+       ( 3959 * acos( cos( radians($lat) ) * cos( radians(lat) ) 
+       * cos( radians(lng) - radians($lng)) + sin(radians($lat)) 
+       * sin( radians(lat)))) AS distance 
+    FROM manual_updates 
+    WHERE category_1='' 
+    ORDER BY distance ASC, pubdate DESC 
+    LIMIT 10";
 }
-else { 
+
+else if(!empty($site_name)) { 
     $query              = "SELECT * FROM manual_updates WHERE category_1='' && site='$site_name' ORDER BY pubdate desc LIMIT 10";
 }
+
+else {
+    $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10"; 
+}
+
+
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
