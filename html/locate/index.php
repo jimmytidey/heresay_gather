@@ -131,6 +131,12 @@ $location_results   = $db->fetch($location_query);
             
             <br/>
             
+            <input type="checkbox" class='category_checkbox' <? checkcheck('dog_mess', $categories) ?> value='dog_mess'>Dog mess<br/> 
+            <input type="checkbox" class='category_checkbox' <? checkcheck('refuse', $categories) ?> value='refuse'>Recycling / bins<br/> 
+            
+            
+            <br/>
+            
             <input type="checkbox" class='category_checkbox' <? checkcheck('kids', $categories) ?> value='kids'> Kids<br/>     
             <input type="checkbox" class='category_checkbox' <? checkcheck('disabilities', $categories) ?> value='disabilities'> Disabilities<br/>                                                                         
                                                                            
