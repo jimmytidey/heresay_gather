@@ -10,12 +10,13 @@ $lng = @addslashes(urldecode($_GET['lng']));
 if(!empty($lat) && !empty($lng)) { 
     $query = "SELECT 
       *, 
-       ( 3959 * acos( cos( radians($lat) ) * cos( radians(lat) ) 
-       * cos( radians(lng) - radians($lng)) + sin(radians($lat)) 
-       * sin( radians(lat)))) AS distance 
-    FROM manual_updates 
+       ( 3959 * acos( cos( radians($lat) ) * cos( radians(manual_sites.lat) ) 
+       * cos( radians(manual_sites.lng) - radians($lng)) + sin(radians($lat)) 
+       * sin( radians(manual_sites.lat)))) AS distance 
+    FROM manual_sites 
+    JOIN manual_updates ON manual_sites.site = manual_updates.site 
     WHERE category_1='' 
-    ORDER BY distance ASC 
+    ORDER BY distance  
     LIMIT 10";
     echo "<p>Locating by lat lng</p>";
 }
