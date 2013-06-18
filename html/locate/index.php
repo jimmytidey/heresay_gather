@@ -17,16 +17,16 @@ if(!empty($lat) && !empty($lng)) {
     WHERE category_1='' 
     ORDER BY distance ASC 
     LIMIT 10";
-    echo "<p>Locating by lat lng</p>"
+    echo "<p>Locating by lat lng</p>";
 }
 
 else if(!empty($site_name)) { 
     $query              = "SELECT * FROM manual_updates WHERE category_1='' && site='$site_name' ORDER BY pubdate desc LIMIT 10";
-    echo "<p>Locating by site name</p>"
+    echo "<p>Locating by site name</p>";
 }
 
 else {
-    echo "<p>Locating by latest date order</p>"
+    echo "<p>Locating by latest date order</p>";
     $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10"; 
 }
 
