@@ -16,7 +16,7 @@ if(!empty($lat) && !empty($lng)) {
     FROM manual_sites 
     JOIN manual_updates ON manual_sites.site = manual_updates.site 
     WHERE category_1='' 
-    ORDER BY distance ASC, pubdate DESC 
+    ORDER BY distance ASC 
     LIMIT 10";
     echo "<p>Locating by lat lng</p>";
 }
