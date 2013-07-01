@@ -6,13 +6,12 @@ class scraperDefault {
 
         $feed = new SimplePie();
     	$feed->set_feed_url($site['url']);
-    	
         $feed->enable_cache(true);
         $feed->set_cache_location('cache');
         $feed->set_cache_duration(15);
-	$feed->force_feed(true);
-	$feed->set_output_encoding('UTF-8');
-	$feed->init();
+	    $feed->force_feed(true);
+	    $feed->set_output_encoding('UTF-8');
+	    $feed->init();
         $feed->handle_content_type();
 
         if ($feed->error):

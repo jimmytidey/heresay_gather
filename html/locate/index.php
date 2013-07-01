@@ -34,6 +34,7 @@ else {
     $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10"; 
 }
 
+echo $query;
 
 $results            = $db->fetch($query);
 
