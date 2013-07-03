@@ -194,7 +194,8 @@ class TwitterAPIExchange
             CURLOPT_HEADER => false,
             CURLOPT_URL => $this->url,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_SSL_VERIFYPEER => false
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_CONNECTTIMEOUT = 30
         );
 
         if (!is_null($postfields))
