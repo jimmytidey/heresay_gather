@@ -31,7 +31,9 @@ class twitterInterface {
                      ->buildOauth($url, $requestMethod)
                      ->performRequest();
         
+
         return json_decode($json);
+        
     }
     
     
