@@ -7,7 +7,7 @@ class ScraperTwitterSearch {
         $this->connection = new twitterInterface();
         
         $results = $this->connection->search(array(
-            'q' => urlencode($site['url']), 
+            'q' => urldecode($site['url']), 
             'count'=> 100
         ));
         
