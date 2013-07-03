@@ -31,17 +31,13 @@ else if(!empty($site_name)) {
 
 else {
     echo "<p>Locating by latest date order</p>";
-    $query              = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10"; 
+    $query          = "SELECT * FROM manual_updates WHERE category_1='' ORDER BY pubdate desc LIMIT 10"; 
 }
-
-echo $query;
 
 $results            = $db->fetch($query);
 
 $location_query     = "SELECT * FROM manual_sites ORDER BY site_id desc";
 $location_results   = $db->fetch($location_query);
-
-
 
 ?>
 <h1>Locate</h1>
